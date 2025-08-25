@@ -40,9 +40,28 @@ contract SimpleStorage {
         return myFavoriteNumber;
     }
 
+    // We're going to explore calldata, memory, storage 
     function addPerson(string memory name, uint256 _favoriteNumber) public{
         Person memory newPerson = Person(_favoriteNumber, name);
         listOfPeople.push(newPerson);
     }
 
 }
+
+// Basic understanding
+/*
+The EVM can read and write to several places (easier edition).
+
+Read and Write: 
+1. Stack
+2. Memory 
+3. Storage
+4. Calldata 
+
+Write (not read):
+1. Logs
+
+Read (not write): 
+1. Chain Data
+
+*/
