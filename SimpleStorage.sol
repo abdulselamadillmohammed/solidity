@@ -29,6 +29,8 @@ contract SimpleStorage {
     // Dynamic array 
     Person[] public listOfPeople; // []
 
+    mapping(string => uint256) public nameToFavoriteNumber;
+
 
     function store(uint256 _favoriteNumber) public {
         myFavoriteNumber = _favoriteNumber;   
@@ -41,9 +43,12 @@ contract SimpleStorage {
     }
 
     // We're going to explore calldata, memory, storage 
-    function addPerson(string memory name, uint256 _favoriteNumber) public{
-        Person memory newPerson = Person(_favoriteNumber, name);
-        listOfPeople.push(newPerson);
+    function addPerson(string memory _name, uint256 _favoriteNumber) public{
+        //Person memory newPerson = Person(_favoriteNumber, name);
+        //_name = "cat";
+
+        listOfPeople.push(Person(_favoriteNumber, _name));
+        nameToFavoriteNumber[_name] = _favoriteNumber;
     }
 
 }
